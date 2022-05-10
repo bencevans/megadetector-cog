@@ -1,0 +1,25 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  # set to true if your model requires a GPU
+  gpu: true
+
+  # a list of ubuntu apt packages to install
+  # system_packages:
+  # - "libgl1-mesa-glx"
+  # - "libglib2.0-0"
+
+  # python version in the form '3.8' or '3.8.12'
+  python_version: "3.8"
+
+  # a list of packages in the format <package-name>==<version>
+  python_packages:
+    - "camtrapml==0.2.3"
+
+  # download model file
+  run:
+    - "python -c 'from camtrapml.detection.models.megadetector import MegaDetectorV4_1; MegaDetectorV4_1().load_model()'"
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
